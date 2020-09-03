@@ -5,7 +5,6 @@ metadata:
 spec:
   template:
     metadata:
-      name: greeting-api-pod
       labels:
         name: greeting-api-pod
         type: backend
@@ -15,23 +14,10 @@ spec:
           image: patilashwin/greeting-api:1.0
           ports:
             - containerPort: 8080
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       name: greeting-api-pod
       type: backend
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: greeing-api-service
-spec:
- type: ClusterIP
- ports:
-   - port: 8080
-     targetPort: 8080
- selector:
-  name: greeting-api-pod
-  type: backend    
+  
 
